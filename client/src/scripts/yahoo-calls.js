@@ -20,7 +20,7 @@ async function apiCall(ticker, modules, category){
 async function getBalanceSheet(ticker){
     const bs = await apiCall(ticker, "balanceSheetHistory", "balanceSheetStatements");
     let arr = [];
-    for (let i = 0; i < bs.length; i++){
+    for (let i = 0; i < 4; i++){
 
         let shortLongTermDebt = 0; 
         try{ shortLongTermDebt = bs[i]["shortLongTermDebt"]["raw"]}
@@ -30,11 +30,22 @@ async function getBalanceSheet(ticker){
         try{ longTermDebt = bs[i]["longTermDebt"]["raw"]}
         catch(e){};
 
+        let cash = 0;
+        try{ cash = bs[i]["cash"]["raw"]}
+        catch(e){};
+
+        let currentAsset = 0;
+        try{ currentAsset = bs[i]["totalCurrentAssets"]["raw"]}
+        catch(e){};
+
+        let currentLiabilities = 0;
+        try{ currentLiabilities= bs[i]["totalCurrentLiabilities"]["raw"]}
+        catch(e){};
+
         arr[i] = {
-            "year":bs[i]["endDate"]["fmt"].substring(0,4),
-            "cash": bs[i]["cash"]["raw"],
-            "currentAsset": bs[i]["totalCurrentAssets"]["raw"],
-            "currentLiabilities": bs[i]["totalCurrentLiabilities"]["raw"],
+            cash,
+            currentAsset,
+            currentLiabilities,
             shortLongTermDebt,
             longTermDebt
         }
@@ -46,12 +57,18 @@ async function getBalanceSheet(ticker){
 async function getCashFlowStatement(ticker){
     const cf = await apiCall(ticker, "cashflowStatementHistory", "cashflowStatements");
     let arr = [];
-    for(let i = 0; i < cf.length; i++){
+    for(let i = 0; i < 4; i++){
+        let depreciation = 0; 
+        try{ depreciation = cf[i]["depreciation"]["raw"]}
+        catch(e){};
+
+        let capex = 0; 
+        try{ capex = cf[i]["capitalExpenditures"]["raw"]}
+        catch(e){};
 
         arr[i] = {
-            "year":cf[i]["endDate"]["fmt"].substring(0,4),
-            "depreciation":cf[i]["depreciation"]["raw"],
-            "capex":cf[i]["capitalExpenditures"]["raw"]
+            depreciation,
+            capex
         }
     }
     return arr;
@@ -60,7 +77,7 @@ async function getCashFlowStatement(ticker){
 async function getIncomeStatement(ticker){
     const is = await apiCall(ticker, "incomeStatementHistory", "incomeStatementHistory");
     let arr = [];
-    for(let i = 0; i < is.length; i++){
+    for(let i = 0; i < 4; i++){
         arr[i] = {
             "year":is[i]["endDate"]["fmt"].substring(0,4),
             "revenue":is[i]["totalRevenue"]["raw"],
@@ -70,16 +87,29 @@ async function getIncomeStatement(ticker){
             "taxExpense":is[i]["incomeTaxExpense"]["raw"],
             "interestExpense":is[i]["interestExpense"]["raw"]
         }
+        if(arr[i]["interestExpense"] == undefined){
+            arr[i]["interestExpense"] = 0;
+        }
     }
     return arr;
 }
 
 async function getWACCData(ticker){
     const beta = await apiCall(ticker, "defaultKeyStatistics","beta");
+    let beta_value = 1;
+    
+    if(beta["raw"] != undefined){
+        beta_value = beta["raw"];
+    }
+
     const mktcap = await apiCall(ticker, "price", "marketCap");
 
-
-    return {"beta":beta["raw"], "mktcap":mktcap["raw"]};
+    let mkt_cap = 1;
+    
+    if(mktcap["raw"] != undefined){
+        mkt_cap = mktcap["raw"];
+    }
+    return {"beta":beta_value, "mktcap":mkt_cap};
 }
 
 export async function getFinancials(ticker){
@@ -91,10 +121,7 @@ export async function getFinancials(ticker){
         return {incomeStatement, cashFlowStatement, balanceSheet, WACCData};
     }
     catch(e){
-        return "Ticker not found";
+        return "Ticker info not complete";
     }
-
     
 }
-
-
