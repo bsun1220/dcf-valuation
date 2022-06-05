@@ -68,9 +68,18 @@ async function getIncomeStatement(ticker){
             "operatingExpense":is[i]["totalOperatingExpenses"]["raw"],
             "pretaxIncome":is[i]["incomeBeforeTax"]["raw"],
             "taxExpense":is[i]["incomeTaxExpense"]["raw"],
+            "interestExpense":is[i]["interestExpense"]["raw"]
         }
     }
     return arr;
+}
+
+async function getWACCData(ticker){
+    const beta = await apiCall(ticker, "defaultKeyStatistics","beta");
+    const mktcap = await apiCall(ticker, "price", "marketCap");
+
+
+    return {"beta":beta["raw"], "mktcap":mktcap["raw"]};
 }
 
 export async function getFinancials(ticker){
@@ -78,7 +87,8 @@ export async function getFinancials(ticker){
         const incomeStatement = await getIncomeStatement(ticker);
         const cashFlowStatement = await getCashFlowStatement(ticker);
         const balanceSheet = await getBalanceSheet(ticker);
-        return {incomeStatement, cashFlowStatement, balanceSheet};
+        const WACCData = await getWACCData(ticker);
+        return {incomeStatement, cashFlowStatement, balanceSheet, WACCData};
     }
     catch(e){
         return "Ticker not found";
