@@ -96,7 +96,7 @@ function calculateWACC(data, ufcf){
     return (equity)/(debt + equity) * re + (debt)/(debt + equity) * rd * (1 - tax);
 }
 
-async function calculateMetrics(ticker){
+export async function calculateMetrics(ticker){
     const DATA = await getFinancials(ticker);
     if(DATA == "Ticker info not complete"){
         return DATA;
@@ -112,4 +112,3 @@ async function calculateMetrics(ticker){
         return "ERROR for " + ticker;
     }
 }
-

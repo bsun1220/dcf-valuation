@@ -1,0 +1,120 @@
+
+
+
+.homepage{
+    width:100%;
+    padding:0px;
+    margin: 0px;
+    height:10vh;
+    background-color:#0568a6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#title{
+    color:#f2f2f2;
+    margin:0px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.content{
+    min-height: 85vh;
+    margin:0px;
+    padding:0px;
+    background-color:aliceblue;
+    font-family:'Times New Roman', serif;
+    color:black;
+}
+
+#line{
+    margin:0px;
+    height:2px;
+}
+
+footer{
+    text-align:right;
+    height:5vh;
+    margin:0px;
+    padding:0px;
+    background-color:aliceblue;
+}
+
+footer p{
+    margin-right:10px;
+    text-align:right;
+}
+
+.start{
+    margin:0px;
+    padding-top:7vh;
+    padding-left:20vw;
+    padding-right:20vw;
+    display:flex;
+    flex-direction: column;
+}
+
+.start h1{
+    margin:0px;
+}
+
+.start p{
+    margin:0px;
+    margin-bottom:15px;
+}
+
+.content h1{
+    font-size:25px;
+}
+
+
+
+#break{
+    height:1px;
+    color:black;
+    background-color:gray;
+    width:100%;
+}
+
+#ticker{
+    text-align:center;
+    margin-top:5vh;
+    margin-bottom:0px;
+    color:gray;
+}
+
+.form{
+    margin-top:5px;
+    margin-bottom:5px;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    width:100%;
+}
+
+.formtext{
+    width:50%;
+    height:30px;
+    text-align:center;
+}
+
+
+.buttons{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:5vh;
+}
+
+.button{
+    margin-top:30px;
+    width:100px;
+    text-align:center;
+    border:none;
+    height:40px;
+    background-color:rgb(208, 78, 78);
+    color:white;
+    font-weight: bold;
+    border-radius: 5px;
+}
