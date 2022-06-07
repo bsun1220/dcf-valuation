@@ -29,6 +29,8 @@
 
 #line{
     margin:0px;
+    padding:0px;
+    background-color:gray;
     height:2px;
 }
 
@@ -37,15 +39,16 @@ footer{
     height:5vh;
     margin:0px;
     padding:0px;
-    background-color:aliceblue;
+    background-color:rgb(208, 78, 78);
 }
 
 footer p{
     margin-right:10px;
     text-align:right;
+    color:white;
 }
 
-.start{
+.page{
     margin:0px;
     padding-top:7vh;
     padding-left:20vw;
@@ -54,11 +57,11 @@ footer p{
     flex-direction: column;
 }
 
-.start h1{
+.page h1{
     margin:0px;
 }
 
-.start p{
+.page p{
     margin:0px;
     margin-bottom:15px;
 }
@@ -66,8 +69,6 @@ footer p{
 .content h1{
     font-size:25px;
 }
-
-
 
 #break{
     height:1px;
@@ -92,10 +93,20 @@ footer p{
     width:100%;
 }
 
+
+
 .formtext{
     width:50%;
-    height:30px;
+    height:40px;
+    font-size:30px;
     text-align:center;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.formtext:focus{
+    outline:none;
+    background-color:#0568a6;
+    color:white;
 }
 
 
@@ -114,7 +125,16 @@ footer p{
     border:none;
     height:40px;
     background-color:rgb(208, 78, 78);
-    color:white;
+    color:black;
     font-weight: bold;
     border-radius: 5px;
+
 }
+
+.button:hover{
+    background-color:#0568a6;
+    color:white;
+    outline:solid;
+    outline-color: black;
+}
+

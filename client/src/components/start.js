@@ -1,10 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 
 import styles from "./global.module.css";
 
-export default function Start(){
+export default function Start(props){
+
+    const [input, setInput] = useState("");
+
+    const handleChange = (e) => {
+        setInput(e.target.value);
+    }
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        if(input !== ""){
+            console.log(input);
+            props.setTicker(input);
+            props.changePage("metrics");
+        }
+    }
+
     return(
-        <div className = {styles.start}>
+        <div className = {styles.page}>
             <h1>Background Information</h1>
             <hr id = {styles.break}/>
             <p>
@@ -14,8 +30,8 @@ export default function Start(){
                 5) finding the enterprise value and 6) determining your equity value per share.
             </p>
             <p>
-                Monte Carlo simulation are used to model the probability of different outcomes by simulating random variables
-                thousands if not millions of times to model their expected value and distribution. It often used in fields
+                Monte Carlo simulations are used to model the probability of different outcomes by simulating random variables
+                thousands if not millions of times to model their expected value and distribution. It is often used in fields
                 like finance where uncertainty is common. This web application uses both DCF valuation and Monte Carlo
                 simulation to value companies. 
             </p>
@@ -29,20 +45,20 @@ export default function Start(){
             </p>
             <p>
                 Once you confirm this data, you will move towards choosing the various assumptions you want 
-                in your model: revenue growth, cogs growth, opex growth, d&amp;a ratio, netcapex ratio, 
+                in your model: revenue growth, cogs growth, opex growth, d&amp;a ratio, net capex ratio, 
                 and nwc ratio, as well as your discount rate, tax rate, and gordon growth rate. You will
                 choose from 3 different distributions (normal, uniform, and triangular) and metrics 
-                like the mean and standard deviation. Each will come preloaded with existing 
+                like the mean and standard deviation. Each will come preloaded with a
                 mean and standard deviation calculated automatically from the last 5 years.
             </p>
 
             <p id = {styles.ticker}> Ticker</p>
-            <form className = {styles.form}>
-                <input type = {"text"} className = {styles.formtext}>
+            <form className = {styles.form} onSubmit = {handleSubmit}>
+                <input type = "text" className = {styles.formtext} onChange = {handleChange}>
                 </input>
             </form>
             <div className = {styles.buttons}>
-                <button className = {styles.button}>
+                <button className = {styles.button} onClick = {handleSubmit}>
                     Submit
                 </button>
             </div>
