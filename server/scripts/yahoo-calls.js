@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 export async function apiCall(ticker, modules, category){
-    const url = `https://cors-anywhere.herokuapp.com/https://query2.finance.yahoo.com/v10/finance/quoteSummary/${ticker}`;
+    const url = `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${ticker}`;
     const data = await axios
         .get(url, {params : {modules}})
         .then(response => {

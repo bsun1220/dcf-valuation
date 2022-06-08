@@ -1,18 +1,27 @@
-const express = require("express");
+import express from "express";
+import cors from "cors";
+import yahooRoutes from "./routes/yahoo.js";
 
 const app = express();
 
-const port = 2001;
+const port = process.env.PORT || 9010;
 
-
-app.listen(port, ()=>{
-    console.log(`server is listening on port ${port}`);
-})
-
+app.use(cors());
 app.use(express.json());
-
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   })
+
+app.get('/',(req, res) => {
+    res.send("hi");
+});
+
+app.use(yahooRoutes);
+
+app.listen(port, ()=>{
+    console.log(`Server is listening on port ${port}`);
+})
+
+

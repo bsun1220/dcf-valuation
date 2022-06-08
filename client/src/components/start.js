@@ -4,7 +4,7 @@ import styles from "./global.module.css";
 
 export default function Start(props){
 
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState("Loading...");
 
     const handleChange = (e) => {
         setInput(e.target.value);
@@ -13,7 +13,6 @@ export default function Start(props){
     const handleSubmit = (e) =>{
         e.preventDefault();
         if(input !== ""){
-            console.log(input);
             props.setTicker(input);
             props.changePage("metrics");
         }
