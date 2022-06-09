@@ -109,6 +109,6 @@ export async function calculateMetrics(ticker){
         return {DATA, UFCF_STATS, WACC};
     }
     catch{
-        return "ERROR for " + ticker;
+        return "Ticker info not complete";
     }
 }

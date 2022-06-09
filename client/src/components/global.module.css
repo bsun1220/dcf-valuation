@@ -95,7 +95,6 @@ footer p{
 }
 
 
-
 .formtext{
     width:50%;
     height:40px;
@@ -139,3 +138,36 @@ footer p{
     outline-color: black;
 }
 
+
+table{
+    margin-top:3vh;
+    margin-bottom:5vh;
+    border-collapse:collapse;
+    border:2px solid #ddd;
+    min-height:50px;
+
+}
+
+#eltitle{
+    border:1px solid #ddd;
+    background-color:#0568a6;
+    color:white;
+    font-size:large;
+    padding:5px;
+    text-align:center;
+    font-weight:bold;
+}
+
+#element{
+    border:1px solid #ddd;
+    text-align:center;
+    width:16%;
+}
+
+#error{
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:40vh;
+}

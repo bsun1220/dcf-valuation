@@ -4,7 +4,6 @@ https://www.reddit.com/r/sheets/comments/ji52uk/yahoo_finance_api_url/
 
 import axios from "axios";
 
-
 export async function apiCall(ticker, modules, category){
     const url = `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${ticker}`;
     const data = await axios
@@ -43,6 +42,7 @@ async function getBalanceSheet(ticker){
         catch(e){};
 
         arr[i] = {
+            "year":bs[i]["endDate"]["fmt"].substring(0,4),
             cash,
             currentAsset,
             currentLiabilities,
@@ -67,6 +67,7 @@ async function getCashFlowStatement(ticker){
         catch(e){};
 
         arr[i] = {
+            "year":cf[i]["endDate"]["fmt"].substring(0,4),
             depreciation,
             capex
         }

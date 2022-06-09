@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-
 import styles from "./global.module.css";
 
 export default function Start(props){
 
-    const [input, setInput] = useState("Loading...");
+    const [input, setInput] = useState("");
 
     const handleChange = (e) => {
         setInput(e.target.value);
@@ -12,8 +11,8 @@ export default function Start(props){
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        if(input !== ""){
-            props.setTicker(input);
+        if(input.replace(/\s/g, "") !== ""){
+            props.setTicker(input.replace(/\s/g, ""));
             props.changePage("metrics");
         }
     }
