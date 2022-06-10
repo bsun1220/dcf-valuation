@@ -3,9 +3,20 @@ import styles from "./global.module.css";
 
 export default function Metrics(props){
     if(props.data === "Ticker info not complete"){
+        const handleClick = (e) =>{
+            e.preventDefault()
+            props.setData("Loading");
+            props.changePage("start");
+        };
+
         return(
             <div className = {styles.page} id = {styles.error}>
                 <h1>Error for {props.ticker.toUpperCase()}</h1>
+                <div className = {styles.buttons}>
+                <button className = {styles.button} onClick = {handleClick}>
+                    Select Again
+                </button>
+                </div>
             </div>
         )
     }
@@ -17,6 +28,13 @@ export default function Metrics(props){
         )
     }
     else{
+        
+
+        const handleClick = (e) => {
+            e.preventDefault();
+            props.changePage("select");
+        };
+
         const is = props.data["DATA"]["incomeStatement"];
         const bs = props.data["DATA"]["balanceSheet"];
         const cf = props.data["DATA"]["cashFlowStatement"];
@@ -76,9 +94,6 @@ export default function Metrics(props){
             items.push(<td id = {styles.element}>{std}</td>);
             ufcf_items.push(<tbody><tr>{items}</tr></tbody>)
         });
-
-
- 
 
 
         return(
@@ -145,6 +160,11 @@ export default function Metrics(props){
                     </tbody>
                     {ufcf_items}
                 </table>
+                <div className = {styles.buttons}>
+                <button className = {styles.button} onClick = {handleClick}>
+                    Confirm
+                </button>
+                </div>
             </div>
         
         )

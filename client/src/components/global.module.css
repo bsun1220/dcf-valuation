@@ -171,3 +171,62 @@ table{
     align-items:center;
     height:40vh;
 }
+
+#cardbreak{
+    margin:0px;
+    margin-bottom:10px;
+}
+
+.card{
+    width:22rem;
+    min-height:5rem;
+    display:flex;
+    flex-direction:column;
+    border-style:solid;
+    padding-top:10px;
+    padding-inline: 40px;
+    padding-bottom:10px;
+    margin:30px;
+    background-color:rgb(202, 215, 226);
+}
+.card h1{
+    font-weight:bold;
+    margin-bottom:0px;
+}
+.card p{
+    margin-bottom:0px;
+    font-size:18px;
+    font-variant: small-caps;
+}
+
+.selectList{
+    display:flex;
+    padding:0px;
+    margin:0px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.metricForm{
+    display:flex;
+    flex-direction:column;
+    margin-top:0px;
+    padding-top:0px;
+    align-items:flex-start;
+    margin-bottom:10px;
+}
+
+.metricForm label{
+    margin-left:5px;
+}
+
+.normal{
+   accent-color:rgb(208, 78, 78);
+}
+
+#numinput{
+    width:100px;
+}
+#numinput:focus{
+    outline-color:rgb(208, 78, 78);
+}
