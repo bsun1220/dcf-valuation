@@ -46,10 +46,10 @@ export default function Metrics(props){
             for(const key of Object.keys(year)){
                 if(key !== "interestExpense"){
                     const amount = key === "year" ? year[key] : "$" + year[key]/1000;
-                    year_items.push(<td id = {styles.element}>{amount}</td>);
+                    year_items.push(<td key = {year + key + "is"} id = {styles.element}>{amount}</td>);
                 }
             }
-            is_items.push(<tbody><tr>{year_items}</tr></tbody>);
+            is_items.push(<tbody key = {Math.random()}><tr>{year_items}</tr></tbody>);
         })
 
         const cf_items = [];
@@ -57,9 +57,9 @@ export default function Metrics(props){
             const year_items = [];
             for(const key of Object.keys(year)){
                 const amount = key === "year" ? year[key] : "$" + year[key]/1000;
-                year_items.push(<td id = {styles.element} colSpan = "2">{amount}</td>);
+                year_items.push(<td key = {year + key + "cf"} id = {styles.element} colSpan = "2">{amount}</td>);
             }
-            cf_items.push(<tbody><tr>{year_items}</tr></tbody>);
+            cf_items.push(<tbody key = {Math.random()}><tr>{year_items}</tr></tbody>);
         })
 
         const bs_items = [];
@@ -67,9 +67,9 @@ export default function Metrics(props){
             const year_items = [];
             for(const key of Object.keys(year)){
                 const amount = key === "year" ? year[key] : "$" + year[key]/1000;
-                year_items.push(<td id = {styles.element}>{amount}</td>);
+                year_items.push(<td key = {year + key + "bs"} id = {styles.element}>{amount}</td>);
             }
-            bs_items.push(<tbody><tr>{year_items}</tr></tbody>);
+            bs_items.push(<tbody key = {Math.random()}><tr>{year_items}</tr></tbody>);
         });
 
         const ufcf = props.data["UFCF_STATS"];
@@ -86,13 +86,13 @@ export default function Metrics(props){
         }
         Object.keys(ufcf).forEach((item) =>{
             const items = [];
-            items.push(<td id = {styles.element}>{ufcf_rev[item]}</td>);
+            items.push(<td key = {item + "name"} id = {styles.element}>{ufcf_rev[item]}</td>);
 
             const avg = "" + Math.round(ufcf[item]["avg"] * 10000)/100+ "%";
-            items.push(<td id = {styles.element}>{avg}</td>);
+            items.push(<td key = {item + "avg"} id = {styles.element}>{avg}</td>);
             const std = "" + Math.round(ufcf[item]["std"] * 10000)/100+ "%";
-            items.push(<td id = {styles.element}>{std}</td>);
-            ufcf_items.push(<tbody><tr>{items}</tr></tbody>)
+            items.push(<td key = {item + "std"} id = {styles.element}>{std}</td>);
+            ufcf_items.push(<tbody key = {item + "ufcf"}><tr>{items}</tr></tbody>)
         });
 
 
@@ -151,12 +151,16 @@ export default function Metrics(props){
                 <hr id = {styles.break}/>
                 <table>
                     <tbody>
+                        <tr>
                         <td id = {styles.eltitle} colSpan = "3">Cash Flow Statistics</td>
+                        </tr>
                     </tbody>
                     <tbody>
+                        <tr>
                         <td id = {styles.element}>Metric</td>
                         <td id = {styles.element}>Average</td>
                         <td id = {styles.element}>Standard Deviation</td>
+                        </tr>
                     </tbody>
                     {ufcf_items}
                 </table>

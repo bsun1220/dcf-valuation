@@ -16,6 +16,7 @@
     color:#f2f2f2;
     margin:0px;
     font-family:'Times New Roman', Times, serif;
+    font-weight:600;
 }
 
 .content{
@@ -59,12 +60,14 @@ footer p{
 
 .page h1{
     margin:0px;
+    font-weight:bold;
 }
 
 .page p{
     margin:0px;
     margin-bottom:15px;
     word-wrap:break-word;
+    line-height:1.2;
 }
 
 .content h1{
@@ -72,10 +75,11 @@ footer p{
 }
 
 #break{
-    height:1px;
+    height:3px;
     color:black;
-    background-color:gray;
+    background-color:rgb(36, 31, 31);
     width:100%;
+    margin-top:5px;
 }
 
 #ticker{
@@ -128,6 +132,7 @@ footer p{
     color:black;
     font-weight: bold;
     border-radius: 5px;
+    font-weight:200px;
 
 }
 
@@ -145,6 +150,7 @@ table{
     border-collapse:collapse;
     border:2px solid #ddd;
     min-height:50px;
+    word-break: break-all;
 
 }
 
@@ -230,3 +236,4 @@ table{
 #numinput:focus{
     outline-color:rgb(208, 78, 78);
 }
+

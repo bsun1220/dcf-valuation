@@ -83,7 +83,7 @@ async function getIncomeStatement(ticker){
             "year":is[i]["endDate"]["fmt"].substring(0,4),
             "revenue":is[i]["totalRevenue"]["raw"],
             "cogs":is[i]["costOfRevenue"]["raw"],
-            "operatingExpense":is[i]["totalOperatingExpenses"]["raw"],
+            "operatingExpense":is[i]["totalOperatingExpenses"]["raw"] - is[i]["costOfRevenue"]["raw"],
             "pretaxIncome":is[i]["incomeBeforeTax"]["raw"],
             "taxExpense":is[i]["incomeTaxExpense"]["raw"],
             "interestExpense":is[i]["interestExpense"]["raw"]
