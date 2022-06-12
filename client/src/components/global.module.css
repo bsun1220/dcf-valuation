@@ -233,7 +233,15 @@ table{
 #numinput{
     width:100px;
 }
+
 #numinput:focus{
     outline-color:rgb(208, 78, 78);
 }
 
+#chart{
+    background-color:black;
+    padding:1px;
+    width:fit-content;
+    margin-inline:auto;
+    margin-bottom:15px;
+}

@@ -110,7 +110,11 @@ async function getWACCData(ticker){
     if(mktcap["raw"] !== undefined){
         mkt_cap = mktcap["raw"];
     }
-    return {"beta":beta_value, "mktcap":mkt_cap};
+
+    const so = await apiCall(ticker, "defaultKeyStatistics", "sharesOutstanding");
+
+
+    return {"beta":beta_value, "mktcap":mkt_cap, "so":so["raw"]};
 }
 
 export async function getFinancials(ticker){

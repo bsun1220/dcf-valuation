@@ -5,7 +5,9 @@ import Card from "./card.js"
 export default function Select(props){
 
     const [data, setData] = useState({
-        "FINANCIALS":{...props.data["DATA"]["incomeStatement"][0]},
+        "FINANCIALS":{...props.data["DATA"]["incomeStatement"][0], 
+            ...props.data["DATA"]["WACCData"], 
+            ...props.data["DATA"]["balanceSheet"][0]},
         "PROJECTIONS":{}
     });
 
@@ -40,7 +42,6 @@ export default function Select(props){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data);
         props.setParams(data);
     }
 
