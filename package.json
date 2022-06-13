@@ -4,9 +4,8 @@
   "description": "DCF Valuation Web Application using Monte Carlo Simulation",
   "main": "index.js",
   "scripts": {
-    "backend":"node server/server.js",
-    "frontend": "npm run start --prefix client",
-    "start": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+    "start":"node server/server.js",
+    "frontend": "npm run start --prefix client"
   },
   "repository": {
     "type": "git",

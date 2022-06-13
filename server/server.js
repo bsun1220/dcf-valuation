@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import yahooRoutes from "./routes/yahoo.js";
+import path from "path";
+import {fileURLToPath} from 'url';
 
 const app = express();
 
@@ -24,4 +26,13 @@ app.listen(port, ()=>{
     console.log(`Server is listening on port ${port}`);
 })
 
+/*
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, '../client/public')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../client/public/index.html'))
+  })*/
