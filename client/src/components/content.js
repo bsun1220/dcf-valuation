@@ -19,7 +19,7 @@ export default function Content(){
     useEffect(()=>{
         const getData = async() =>{
             if(ticker !== ""){
-                const request = await axios.get(`http://localhost:9010/yahoo/${ticker}`);
+                const request = await axios.get(`https://dcf-mc.herokuapp.com/yahoo/${ticker}`);
                 setData(request.data);
             }
         }
