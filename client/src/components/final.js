@@ -40,7 +40,6 @@ export default function Final(props){
     const _50pe = sorted_data[Math.floor(sorted_data.length * 0.5)]
     const _75pe = sorted_data[Math.floor(sorted_data.length * 0.75)]
     const IQR = _75pe - _25pe;
-    console.log(IQR);
 
     return(<div className = {styles.page} id = {styles.final}>
         <h1>Distribution</h1>
@@ -49,7 +48,7 @@ export default function Final(props){
         </p>
         <div id = {styles.chart}>
         <Chart
-          width={'500px'}
+          width={'600px'}
           height={'240px'}
           chartType="Histogram"
           loader={<div>Loading Chart...</div>}
@@ -67,7 +66,7 @@ export default function Final(props){
         </p>
         <h1>Metrics</h1>
         <hr id = {styles.break}/>
-        <p> The average of the distribution was ${Math.floor(dataMean * 100)/100 }. 
+        <p> The mean of the distribution was ${Math.floor(dataMean * 100)/100 }. 
             The standard deviation was ${Math.floor(dataSTD * 100)/100}. 
             When analyzing the outlier-resistant metrics, the median of the distribution was
             ${Math.floor(_50pe * 100)/100} with an interquartile range of ${Math.floor(IQR*100)/100}.

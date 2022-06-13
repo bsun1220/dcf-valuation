@@ -11,6 +11,7 @@ export default function Metrics(props){
 
         return(
             <div className = {styles.page} id = {styles.error}>
+                <img src = {"error.svg"} alt = {"error"} width = {"100px"} style = {{"marginBottom":"10px"}}/>
                 <h1>Error for {props.ticker.toUpperCase()}</h1>
                 <div className = {styles.buttons}>
                 <button className = {styles.button} onClick = {handleClick}>
